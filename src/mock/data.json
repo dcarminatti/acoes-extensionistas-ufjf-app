@@ -1,0 +1,54 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": " John Doe",
+      "email": "coordinator@ufjf.br",
+      "role": "coordinator"
+    },
+    {
+      "id": 2,
+      "name": "Jane Smith",
+      "email": "teacher@ufjf.br",
+      "role": "teacher"
+    },
+    {
+      "id": 3,
+      "name": "Alice Johnson",
+      "email": "alice.johnson@ufjf.br",
+      "role": "student"
+    }
+  ],
+  "actions": [
+    {
+      "id": 1,
+      "name": "Oficina de Robótica Educacional",
+      "description": "Oficina prática para introdução à robótica em escolas públicas.",
+      "status": "Em andamento",
+      "location": "Escola Municipal José do Patrocínio",
+      "professor": "John Doe",
+      "area": "Engenharias",
+      "photo": "https://images.unsplash.com/photo-1655393001768-d946c97d6fd1?q=80&w=1476&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    },
+    {
+      "id": 2,
+      "name": "Projeto Saúde na Comunidade",
+      "description": "Ações de promoção à saúde e prevenção de doenças em bairros periféricos.",
+      "status": "Pendente",
+      "location": "Bairro Nova Era",
+      "professor": "Jane Smith",
+      "area": "Ciências da Saúde",
+      "photo": "https://images.unsplash.com/photo-1477332552946-cfb384aeaf1c?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    },
+    {
+      "id": 3,
+      "name": "Feira de Literatura Brasileira",
+      "description": "Evento de incentivo à leitura com autores locais e oficinas literárias.",
+      "status": "Finalizado",
+      "location": "Biblioteca Central UFJF",
+      "professor": "Eliane Doe",
+      "area": "Linguística, Letras e Artes",
+      "photo": "https://images.unsplash.com/photo-1521587760476-6c12a4b040da?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    }
+  ]
+}
