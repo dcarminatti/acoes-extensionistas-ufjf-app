@@ -14,8 +14,8 @@ import { Input } from "@/components/ui/input";
 import { useAuth } from "@/context/AuthContext";
 import { useActions } from "@/hooks/use-actions";
 import { cn } from "@/lib/utils";
-import { Edit, Eye, Filter, X } from "lucide-react";
-import { useEffect, useState } from "react";
+import { Eye, Filter, X } from "lucide-react";
+import { useState } from "react";
 import { redirect } from "next/navigation";
 import { getStatusColor } from "@/lib/utils";
 
@@ -37,7 +37,6 @@ export default function Home() {
   const [selectedCard, setSelectedCard] = useState<number | null>(null);
   const [actions, setActions] = useState(originalActions);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const [search, setSearch] = useState("");
   const [statusFilter, setStatusFilter] = useState("");
   const [areaFilter, setAreaFilter] = useState("");
 
@@ -52,13 +51,22 @@ export default function Home() {
     setSelectedCard(selectedCard === id ? null : id);
   };
 
+  const handleSearch = (str: string) => {
+    if (str === "" && statusFilter === "" && areaFilter === "") {
+      setActions(originalActions);
+      return;
+    }
+
+    let filtered = originalActions;
+    setActions(
+      filtered.filter((action) =>
+        action.name.toLowerCase().includes(str.toLowerCase())
+      )
+    );
+  };
+
   const applyFilters = () => {
     let filtered = originalActions;
-    if (search) {
-      filtered = filtered.filter((action) =>
-        action.name.toLowerCase().includes(search.toLowerCase())
-      );
-    }
     if (statusFilter) {
       filtered = filtered.filter((action) => action.status === statusFilter);
     }
@@ -74,12 +82,6 @@ export default function Home() {
     }
   };
 
-  const handleEditAction = (id: number) => {
-    if (originalActions.find((action) => action.id === id)) {
-      redirect(`/actions/edit/${id}`);
-    }
-  };
-
   return (
     <div className="space-y-4">
       <div>
@@ -90,8 +92,7 @@ export default function Home() {
       <div className="flex items-center space-x-2">
         <Input
           placeholder="Pesquisar ação..."
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
+          onChange={(e) => handleSearch(e.target.value)}
         />
         <Button
           size="icon"

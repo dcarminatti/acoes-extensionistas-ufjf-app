@@ -82,6 +82,20 @@ export default function MyActionPage() {
     }
   };
 
+  const handleSearch = (str: string) => {
+    if (str === "" && statusFilter === "" && areaFilter === "") {
+      setActions(originalActions);
+      return;
+    }
+
+    let filtered = originalActions;
+    setActions(
+      filtered.filter((action) =>
+        action.name.toLowerCase().includes(str.toLowerCase())
+      )
+    );
+  };
+
   return (
     <div className="space-y-4">
       <div>
@@ -92,8 +106,7 @@ export default function MyActionPage() {
       <div className="flex items-center space-x-2">
         <Input
           placeholder="Pesquisar ação..."
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
+          onChange={(e) => handleSearch(e.target.value)}
         />
         <Button
           size="icon"
